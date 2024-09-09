@@ -78,7 +78,7 @@ function Dashboard() {
                 color="success"
                 icon="store"
                 title="Revenue"
-                count="34k"
+                count="14k"
                 percentage={{
                   color: "success",
                   amount: "+1%",

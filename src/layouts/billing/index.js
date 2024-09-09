@@ -51,8 +51,8 @@ function Billing() {
                   <DefaultInfoCard
                     icon="account_balance"
                     title="Revenue"
-                    description="Belong Interactive"
-                    value="+$2000"
+                    description="Monthly Revenue"
+                    value="+₹200000"
                   />
                 </Grid>
               </Grid>
