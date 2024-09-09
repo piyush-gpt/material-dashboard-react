@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.2.0
+* Museum Sathi React - v2.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -19,10 +19,10 @@ import PropTypes from "prop-types";
 // @mui material components
 import Icon from "@mui/material/Icon";
 
-// Material Dashboard 2 React components
+// Museum Sathi React components
 import MDBox from "components/MDBox";
 
-// Material Dashboard 2 React contexts
+// Museum Sathi React contexts
 import { useMaterialUIController } from "context";
 
 function DataTableHeadCell({ width, children, sorted, align, ...rest }) {

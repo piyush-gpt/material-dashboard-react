@@ -1,6 +1,6 @@
 /**
 =========================================================
-* Material Dashboard 2 React - v2.2.0
+* Museum Sathi React - v2.2.0
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/material-dashboard-react
@@ -22,7 +22,7 @@ import PropTypes from "prop-types";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "@mui/material/Link";
 
-// Material Dashboard 2 React components
+// Museum Sathi React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
