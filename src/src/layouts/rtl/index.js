@@ -13,6 +13,8 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import { useEffect } from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 
@@ -28,15 +30,26 @@ import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Data
-import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
-import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+import reportsBarChartData from "layouts/rtl/data/reportsBarChartData";
+import reportsLineChartData from "layouts/rtl/data/reportsLineChartData";
 
-// Dashboard components
-import Projects from "layouts/dashboard/components/Projects";
-import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
+// RTL components
+import Projects from "layouts/rtl/components/Projects";
+import OrdersOverview from "layouts/rtl/components/OrdersOverview";
 
-function Dashboard() {
+// Museum Sathi React contexts
+import { useMaterialUIController, setDirection } from "context";
+
+function RTL() {
+  const [, dispatch] = useMaterialUIController();
   const { sales, tasks } = reportsLineChartData;
+
+  // Changing the direction to rtl
+  useEffect(() => {
+    setDirection(dispatch, "rtl");
+
+    return () => setDirection(dispatch, "ltr");
+  }, []);
 
   return (
     <DashboardLayout>
@@ -48,12 +61,12 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="dark"
                 icon="weekend"
-                title="Bookings"
+                title="أموال اليوم"
                 count={281}
                 percentage={{
                   color: "success",
                   amount: "+55%",
-                  label: "than yesterday",
+                  label: "من الأسبوع الماضي",
                 }}
               />
             </MDBox>
@@ -62,12 +75,12 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 icon="leaderboard"
-                title="Today's Reach"
+                title="مستخدمو اليوم"
                 count="2,300"
                 percentage={{
                   color: "success",
                   amount: "+3%",
-                  label: "than last month",
+                  label: "من الأسبوع الماضي",
                 }}
               />
             </MDBox>
@@ -77,12 +90,12 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="success"
                 icon="store"
-                title="Revenue"
-                count="₹14k"
+                title="عملاء جدد"
+                count="34k"
                 percentage={{
                   color: "success",
                   amount: "+1%",
-                  label: "than yesterday",
+                  label: "من الشهر الماضي",
                 }}
               />
             </MDBox>
@@ -92,12 +105,12 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Website Traffic"
-                count="+211"
+                title="مبيعات"
+                count="+91"
                 percentage={{
                   color: "success",
                   amount: "",
-                  label: "Just updated",
+                  label: "مقارنة بيوم أمس",
                 }}
               />
             </MDBox>
@@ -109,9 +122,9 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsBarChart
                   color="info"
-                  title="website views"
-                  description="Last Campaign Performance"
-                  date="campaign sent 2 days ago"
+                  title="مشاهدات الموقع"
+                  description="آخر أداء للحملة"
+                  date="الحملة أرسلت قبل يومين"
                   chart={reportsBarChartData}
                 />
               </MDBox>
@@ -120,16 +133,37 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsLineChart
                   color="success"
-                  title="daily sales"
+                  title="المبيعات اليومية"
                   description={
                     <>
-                      (<strong>+15%</strong>) increase in today sales.
+                      (<strong>+15%</strong>) زيادة في مبيعات اليوم..
                     </>
                   }
-                  date="updated 4 min ago"
+                  date="تم التحديث منذ 4 دقائق"
                   chart={sales}
                 />
               </MDBox>
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <MDBox mb={3}>
+                <ReportsLineChart
+                  color="dark"
+                  title="المهام المكتملة"
+                  description="آخر أداء للحملة"
+                  date="تم تحديثه للتو"
+                  chart={tasks}
+                />
+              </MDBox>
+            </Grid>
+          </Grid>
+        </MDBox>
+        <MDBox>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={8}>
+              <Projects />
+            </Grid>
+            <Grid item xs={12} md={6} lg={4}>
+              <OrdersOverview />
             </Grid>
           </Grid>
         </MDBox>
@@ -139,4 +173,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default RTL;
